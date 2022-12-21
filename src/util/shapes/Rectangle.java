@@ -11,7 +11,10 @@ public class Rectangle extends DefinedShape implements Shape {
 
 
 
-  public Rectangle(){
+  public Rectangle(Color color, Point2D pos, float opacity, double height, double width,
+      Point2D... vertices){
+    super(color, pos, opacity, vertices, height, width);
+
 
   }
 

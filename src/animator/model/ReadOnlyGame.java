@@ -1,7 +1,6 @@
 package animator.model;
 
 import java.util.List;
-import util.shapes.Shape;
 
 /**
  * This is a read only model for the view to enforce MVC. This is the interface for the game of the
@@ -19,7 +18,7 @@ public interface ReadOnlyGame {
    * Get the list of all shapes on the board.
    * @return the list of all the shapes for the game
    */
-  List<Shape> getShapes();
+  List<GamePixel> getShapes();
 
   /**
    * Get the size of the edge of blocks

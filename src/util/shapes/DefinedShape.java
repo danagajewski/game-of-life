@@ -22,6 +22,14 @@ public abstract class DefinedShape implements Shape {
     if(opacity < 0 || opacity > 1){
       throw new IllegalArgumentException("Opacity out of bounds of [0,1]");
     }
+    if(pos.getX() < 0 || pos.getY() < 0) {
+      throw new IllegalArgumentException("Position cannot be negative");
+    }
+    for(Point2D vertex : vertices){
+      if(vertex.getY() < 0 || vertex.getX() < 0){
+        throw new IllegalArgumentException("Vertex cannot be less than 0 in either axis");
+      }
+    }
 
 
     this.color = color;
@@ -44,7 +52,7 @@ public abstract class DefinedShape implements Shape {
 
   @Override
   public Point2D[] getVertices() {
-    return this.getVerticesHelper(this.vertices);
+    return this.vertices;
   }
 
   @Override
@@ -52,22 +60,22 @@ public abstract class DefinedShape implements Shape {
     return opacity;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArbitraryShape that = (ArbitraryShape) o;
-    return Float.compare(that.opacity, opacity) == 0 && rotation == that.rotation && color
-        .equals(that.color) && pos.equals(that.pos) && Arrays.equals(vertices, that.vertices);
-  }
+//  @Override
+//  public boolean equals(Object o) {
+//    if (this == o) {
+//      return true;
+//    }
+//    if (o == null || getClass() != o.getClass()) {
+//      return false;
+//    }
+//    ArbitraryShape that = (ArbitraryShape) o;
+//    return Float.compare(that.opacity, opacity) == 0 && rotation == that.rotation && color
+//        .equals(that.color) && pos.equals(that.pos) && Arrays.equals(vertices, that.vertices);
+//  }
 
   @Override
   public int hashCode() {
-    int result = Objects.hash(color, pos, opacity, rotation);
+    int result = Objects.hash(color, pos, opacity);
     result = 31 * result + Arrays.hashCode(vertices);
     return result;
   }
