@@ -10,46 +10,46 @@ import java.awt.geom.Point2D;
 public class Rectangle extends DefinedShape implements Shape {
 
 
-
   public Rectangle(Color color, Point2D pos, float opacity, double height, double width,
       Point2D... vertices){
     super(color, pos, opacity, vertices, height, width);
-
-
+    if(vertices.length != 4){
+      throw new IllegalArgumentException("Rectangle must have 4 sides");
+    }
   }
 
   @Override
   public Color getColor() {
-    return null;
+    return this.color;
   }
 
   @Override
   public ShapeType getShapeType() {
-    return null;
+    return ShapeType.RECTANGLE;
   }
 
   @Override
   public Point2D getPosition() {
-    return null;
+    return this.pos;
   }
 
   @Override
   public Point2D[] getVertices() {
-    return new Point2D[0];
+    return this.vertices;
   }
 
   @Override
   public float getOpacity() {
-    return 0;
+    return this.opacity;
   }
 
   @Override
   public double getHeight() {
-    return 0;
+    return this.height;
   }
 
   @Override
   public double getWidth() {
-    return 0;
+    return this.width;
   }
 }

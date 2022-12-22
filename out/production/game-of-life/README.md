@@ -1,0 +1,1 @@
+This project is a JAVA implementation of John Conway's Game of Life. It includes two versions, the first is the regular game, the second is using hexagons instead of squares.
