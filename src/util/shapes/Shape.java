@@ -42,13 +42,13 @@ public interface Shape {
    * Get the height of the shape (vertical distance from highest to lowest vertex).
    * @return height distance
    */
-  double getHeight();
+  int getHeight();
 
   /**
    * Get the width of the shape (horizontal distance from the left-most and right-most vertex).
    * @return width distance
    */
-  double getWidth();
+  int getWidth();
 
   /**
    * An enumeration of supported types of shapes.
@@ -57,5 +57,8 @@ public interface Shape {
     RECTANGLE,
     HEXAGON
   }
+
+  void setColor(Color color);
+
 
 }

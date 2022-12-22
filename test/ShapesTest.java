@@ -34,4 +34,15 @@ public class ShapesTest {
     assertEquals(rectangle.getHeight(), 10, .001);
   }
 
+  //Test to make sure that setting the color of a shape does so
+  @Test
+  public void testCorrectSettingOfColor(){
+    Rectangle rectangle = new Rectangle(Color.BLACK, new Point2D.Double(10,10), 1, 10, 10,
+        new Point2D.Double(10, 10), new Point2D.Double(20, 10), new Point2D.Double(20, 20),
+        new Point2D.Double(10, 20));
+
+    rectangle.setColor(Color.WHITE);
+    assertEquals(rectangle.getColor(), Color.WHITE);
+  }
+
 }

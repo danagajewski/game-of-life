@@ -9,15 +9,15 @@ import java.util.Objects;
 
 public abstract class DefinedShape implements Shape {
 
-  protected final Color color;
+  protected Color color;
   protected final Point2D pos;
   protected final float opacity;
   protected final Point2D[] vertices;
-  protected final double height;
-  protected final double width;
+  protected final int height;
+  protected final int width;
 
-  public DefinedShape(Color color, Point2D pos, float opacity, Point2D[] vertices, double height,
-      double width){
+  public DefinedShape(Color color, Point2D pos, float opacity, Point2D[] vertices, int height,
+      int width){
     //Check Values
     if(opacity < 0 || opacity > 1){
       throw new IllegalArgumentException("Opacity out of bounds of [0,1]");
@@ -88,13 +88,18 @@ public abstract class DefinedShape implements Shape {
   }
 
   @Override
-  public double getHeight() {
+  public int getHeight() {
     return this.height;
   }
 
   @Override
-  public double getWidth() {
+  public int getWidth() {
     return this.width;
+  }
+
+  @Override
+  public void setColor(Color color){
+    this.color = color;
   }
 
 
