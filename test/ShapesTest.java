@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
@@ -6,6 +8,7 @@ import java.awt.geom.Point2D;
 import org.junit.Before;
 import org.junit.Test;
 import util.shapes.Rectangle;
+import util.shapes.builder.RectangleBuilder;
 
 public class ShapesTest {
 
@@ -43,6 +46,29 @@ public class ShapesTest {
 
     rectangle.setColor(Color.WHITE);
     assertEquals(rectangle.getColor(), Color.WHITE);
+  }
+
+  // Test the rectangle builder
+  @Test
+  public void testCorrectRectangleBuilderOutput(){
+    Rectangle rectangle = new Rectangle(Color.BLACK, new Point2D.Double(10,10), 1, 10, 10,
+        new Point2D.Double(10, 10), new Point2D.Double(20, 10), new Point2D.Double(20, 20),
+        new Point2D.Double(10, 20));
+
+    Rectangle built = new RectangleBuilder().setColor(Color.BLACK)
+        .setPosition(new Point2D.Double(10,10)).setHeight(10).setWidth(10).build();
+
+    assertEquals(rectangle, built);
+
+  }
+
+  //Test to make sure that two different builders create different shapes
+  @Test
+  public void testDifferentBuildersObjectsDiffer(){
+    Rectangle rect1 = new RectangleBuilder().setColor(Color.RED).build();
+    Rectangle rect2 = new RectangleBuilder().setColor(Color.WHITE).build();
+
+    assertNotEquals(rect1, rect2);
   }
 
 }

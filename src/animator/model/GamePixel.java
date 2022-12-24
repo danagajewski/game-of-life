@@ -8,18 +8,14 @@ import util.shapes.Rectangle;
  */
 public class GamePixel {
 
-  private Rectangle pixel;
+  private final Rectangle pixel;
   private boolean lit;
-  private final int xpos;
-  private final int ypos;
 
   // Constructor for a game pixel
-  public GamePixel(Rectangle pixel, boolean lit, int xpos, int ypos){
+  public GamePixel(Rectangle pixel, boolean lit){
 
     this.pixel = pixel;
     this.lit = lit;
-    this.xpos = xpos;
-    this.ypos = ypos;
 
   }
 
@@ -51,14 +47,6 @@ public class GamePixel {
    */
   public void setPixelLit(){
     this.pixel.setColor(Color.WHITE);
-  }
-
-  public int getXpos(){
-    return this.xpos;
-  }
-
-  public int getYpos(){
-    return this.ypos;
   }
 
 }

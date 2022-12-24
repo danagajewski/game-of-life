@@ -2,6 +2,8 @@ package util.shapes.builder;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
+import java.util.Objects;
 import util.shapes.Rectangle;
 import util.shapes.Shape;
 
@@ -134,15 +136,14 @@ public class RectangleBuilder {
    */
   public Rectangle build() {
 
-    // check that all values were set before building
-    if (this.vertices == null) {
-      throw new IllegalStateException("The set of vertices for the shape have not been specified");
-    }
+    Point2D[] vertices;
 
-    Point2D[] vertices = new Point2D[]{pos,
-        new Point2D.Double((int) (pos.getX() + this.width), (int) pos.getY()),
-        new Point2D.Double((int) (pos.getX() + this.width), (int) pos.getY() - this.height),
-        new Point2D.Double((int) pos.getX(), (int) pos.getY() - this.height)};
+    // check that all values were set before building
+    vertices = Objects.requireNonNullElseGet(this.vertices, () -> new Point2D[]{pos,
+        new Double((int) (pos.getX() + this.width), (int) pos.getY()),
+        new Double((int) (pos.getX() + this.width), (int) pos.getY() + this.height),
+        new Double((int) pos.getX(), (int) pos.getY() + this.height)});
+
 
     Rectangle returnShape = new Rectangle(this.color, this.pos, this.opacity, this.height, this.width, vertices);
 

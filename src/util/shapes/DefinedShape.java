@@ -60,18 +60,18 @@ public abstract class DefinedShape implements Shape {
     return opacity;
   }
 
-//  @Override
-//  public boolean equals(Object o) {
-//    if (this == o) {
-//      return true;
-//    }
-//    if (o == null || getClass() != o.getClass()) {
-//      return false;
-//    }
-//    ArbitraryShape that = (ArbitraryShape) o;
-//    return Float.compare(that.opacity, opacity) == 0 && rotation == that.rotation && color
-//        .equals(that.color) && pos.equals(that.pos) && Arrays.equals(vertices, that.vertices);
-//  }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    DefinedShape that = (DefinedShape) o;
+    return Float.compare(that.opacity, opacity) == 0 && color
+        .equals(that.color) && pos.equals(that.pos) && Arrays.equals(vertices, that.vertices);
+  }
 
   @Override
   public int hashCode() {
